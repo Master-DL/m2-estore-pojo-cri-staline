@@ -12,7 +12,6 @@ import estorePojo.exceptions.InsufficientBalanceException;
 import estorePojo.exceptions.InvalidCartException;
 import estorePojo.exceptions.UnknownAccountException;
 import estorePojo.exceptions.UnknownItemException;
-import main.Client;
 
 //Service
 public class Store {

@@ -3,7 +3,7 @@ package data;
 import java.util.HashMap;
 import java.util.Map;
 
-import main.Client;
+import services.Client;
 
 //Data
 public class Cart {

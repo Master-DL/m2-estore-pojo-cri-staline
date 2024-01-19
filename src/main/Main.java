@@ -1,7 +1,7 @@
 package main;
 
-import data.Client;
 import services.Bank;
+import services.Client;
 import services.Provider;
 import services.Store;
 

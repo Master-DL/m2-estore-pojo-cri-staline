@@ -1,4 +1,4 @@
-package main;
+package services;
 
 import data.Order;
 import data.Cart;
@@ -6,9 +6,7 @@ import estorePojo.exceptions.InsufficientBalanceException;
 import estorePojo.exceptions.InvalidCartException;
 import estorePojo.exceptions.UnknownAccountException;
 import estorePojo.exceptions.UnknownItemException;
-import services.Store;
 
-//Services
 public class Client implements Runnable {
 
     private Store store;

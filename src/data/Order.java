@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.Set;
 
 import estorePojo.exceptions.UnknownItemException;
-import main.Client;
+import services.Client;
 
 //Data
 public class Order {

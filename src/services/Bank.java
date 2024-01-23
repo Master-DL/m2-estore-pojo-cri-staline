@@ -5,11 +5,12 @@ import estorePojo.exceptions.InsufficientBalanceException;
 import estorePojo.exceptions.UnknownAccountException;
 
 //service
-public class Bank {
+public class Bank implements IBank{
 
 	//data
 	private Account estore;
-	private Account anne, bob;
+	private Account anne;
+	private Account bob;
 
 	public Bank() {
 		estore = new Account();
@@ -26,7 +27,8 @@ public class Bank {
 
 	public void transfert(String from, String to, double amount)
 			throws InsufficientBalanceException, UnknownAccountException {
-		Account Afrom = null, Ato = null;
+		Account Afrom = null;
+		Account Ato = null;
 
 		if (from.equals("E-Store"))
 			Afrom = estore;

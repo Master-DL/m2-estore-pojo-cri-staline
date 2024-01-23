@@ -14,7 +14,7 @@ import estorePojo.exceptions.UnknownAccountException;
 import estorePojo.exceptions.UnknownItemException;
 
 //Service
-public class Store {
+public class Store implements IStore{
 
 	    private IProvider provider;
 	    private IBank bank;
@@ -52,10 +52,8 @@ public class Store {
 	                    "Item "+item+
 	                    " does not correspond to any known reference");
 	        
-	        ItemInStock iis = (ItemInStock) itemsInStock.get(item);
-	        boolean isAvailable = (iis.getQuantity() >= qty);
-	        
-	        return isAvailable;
+	        ItemInStock iis = itemsInStock.get(item);
+	        return (iis.getQuantity() >= qty); 
 	    }
 
 	    /**
@@ -81,16 +79,12 @@ public class Store {
 	            Object item,
 	            int qty )
 	    throws UnknownItemException, InvalidCartException {
-	        
 	        if ( cart == null ) {
-	            // If no cart is provided, create a new one
 	            cart = new Cart(client);
 	        }
-	        else {
-	            if ( client != cart.getClient() )
-	                throw new InvalidCartException(
-	                        "Cart "+cart+" does not belong to "+client);
-	        }
+	        else if ( client != cart.getClient() ) {
+				throw new InvalidCartException("Cart "+cart+" does not belong to "+client);
+			}
 	        
 	        cart.addItem(item,qty);
 	        
@@ -220,8 +214,6 @@ public class Store {
 	        // Throws UnknownItemException if the item does not exist
 	        final double price = provider.getPrice(item);
 	        
-	        final double totalAmount = price*qty;
-	        
 	        // The delay (in hours) for delivering the order
 	        // By default, it takes 2 hours to ship items from the stock
 	        // This delay increases if an order is to be placed to the provider
@@ -229,7 +221,7 @@ public class Store {
 	        
 	        // Check whether the item is available in the stock
 	        // If not, place an order for it to the provider
-	        ItemInStock iis = (ItemInStock) itemsInStock.get(item);
+	        ItemInStock iis = itemsInStock.get(item);
 	        if ( iis == null ) {
 	            int quantity = qty + more;
 	            delay += provider.order(this,item,quantity);
@@ -242,8 +234,7 @@ public class Store {
 	            // to match the order
 	            if ( iis.getQuantity() >= qty ) {
 	                iis.changeQuantity(qty);
-	            }
-	            else {
+	            } else {
 	                // An order to the provider needs to be issued
 	                int quantity = qty + more;
 	                delay += provider.order(this,item,quantity);

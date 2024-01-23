@@ -1,3 +1,12 @@
+package services;
+import data.Cart;
+import data.ItemInStock;
+import data.Order;
+import estorePojo.exceptions.InsufficientBalanceException;
+import estorePojo.exceptions.InvalidCartException;
+import estorePojo.exceptions.UnknownAccountException;
+import estorePojo.exceptions.UnknownItemException;
+
 public interface IStore {
 
     public double getPrice( Object item ) throws UnknownItemException;
@@ -25,6 +34,4 @@ public interface IStore {
             String bankAccountRef
     ) throws UnknownItemException, InsufficientBalanceException, UnknownAccountException;
 
-    private void treatOrder( Order order, Object item, int qty )
-    throws UnknownItemException;
 }

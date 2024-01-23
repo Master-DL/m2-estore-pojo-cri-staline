@@ -6,7 +6,7 @@ import java.util.Map;
 import estorePojo.exceptions.UnknownItemException;
 
 //Service
-public class Provider {
+public class Provider implements IProvider {
 
 	private Map<String, Double> itemPrices = new HashMap<>();
 
@@ -29,7 +29,7 @@ public class Provider {
 		if (!itemPrices.containsKey(item))
 			throw new UnknownItemException("Item " + item + " is not an item delivered by this provider.");
 
-		Double price = (Double) itemPrices.get(item);
+		Double price = itemPrices.get(item);
 		return price.doubleValue();
 	}
 

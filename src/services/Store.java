@@ -16,8 +16,8 @@ import estorePojo.exceptions.UnknownItemException;
 //Service
 public class Store {
 
-	    private Provider provider;
-	    private Bank bank;
+	    private IProvider provider;
+	    private IBank bank;
 
 	    /**
 	     * Constructs a new StoreImpl

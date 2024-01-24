@@ -1,6 +1,5 @@
 package services;
 import data.Cart;
-import data.ItemInStock;
 import data.Order;
 import estorePojo.exceptions.InsufficientBalanceException;
 import estorePojo.exceptions.InvalidCartException;
@@ -8,11 +7,6 @@ import estorePojo.exceptions.UnknownAccountException;
 import estorePojo.exceptions.UnknownItemException;
 
 public interface IStore {
-
-    public double getPrice( Object item ) throws UnknownItemException;
-
-    public boolean isAvailable( Object item, int qty )
-	    throws UnknownItemException;
 
     public Cart addItemToCart(
 	            Cart cart,

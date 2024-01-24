@@ -9,7 +9,7 @@ import estorePojo.exceptions.UnknownItemException;
 
 public class Client implements Runnable {
 
-    private Store store;
+    private IStore store;
 
     public Client (Store s){
     	store = s;
